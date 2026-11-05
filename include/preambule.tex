@@ -1,14 +1,23 @@
-%% XeLaTeX + ГОСТ (Финуниверситет): TNR 14 pt, поля, интервал 1,5
+%% XeLaTeX + ГОСТ: Times New Roman 14 pt, поля, интервал 1,5
 \usepackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX}
-\setmainfont{Times New Roman}
-\setsansfont{Times New Roman}
+\setmainfont{Times New Roman}[
+  BoldFont = {Times New Roman Bold},
+  ItalicFont = {Times New Roman Italic},
+  BoldItalicFont = {Times New Roman Bold Italic},
+]
+\setsansfont{Times New Roman}[
+  BoldFont = {Times New Roman Bold},
+]
 \setmonofont[Scale=0.92]{Courier New}
 \newfontfamily\cyrillicfonttt{Courier New}[Scale=0.92]
 
 \usepackage{polyglossia}
 \setdefaultlanguage{russian}
 \setotherlanguage{english}
+
+\XeTeXlinebreaklocale "ru"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
 
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
 \usepackage{icomma}
@@ -18,14 +27,31 @@
 \onehalfspacing
 
 \setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0pt}
 
 \usepackage{enumitem}
 \makeatletter
 \AddEnumerateCounter{\asbuk}{\russian@alph}{щ}
 \makeatother
 
+\usepackage{etoolbox}
+\BeforeBeginEnvironment{enumerate}{\begin{spacing}{1.5}}
+\AfterEndEnvironment{enumerate}{\end{spacing}}
+\setlist[enumerate,1]{
+  label=\arabic*),
+  wide=0pt,
+  leftmargin=2.8em,
+  labelwidth=2.2em,
+  labelsep=0.6em,
+  align=parleft,
+  itemsep=0pt,
+  topsep=0pt,
+  parsep=0pt,
+  partopsep=0pt,
+}
+
 \usepackage{microtype}
-\emergencystretch=2em
+\emergencystretch=1.5em
 
 \usepackage{caption}
 \captionsetup{justification=centering,font=normalsize,labelfont=normalsize}
@@ -43,14 +69,25 @@
   breaklines=true
 }
 
-%% Заголовки: тот же кегль; перенос длинных названий внутри полей
-\usepackage[raggedright]{titlesec}
-\titleformat{\section}{\normalfont\bfseries}{\thesection.}{0.5em}{}
-\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{0.5em}{}
-\titleformat{\subsubsection}{\normalfont\bfseries}{\thesubsubsection}{0.5em}{}
-\titlespacing*{\section}{1.25cm}{*1.2}{*0.8}
-\titlespacing*{\subsection}{1.25cm}{*1.0}{*0.6}
-\titlespacing*{\subsubsection}{1.25cm}{*0.8}{*0.5}
+%% Заголовки: кегль как у текста, перенос по ширине абзаца (block)
+\usepackage{titlesec}
+\titleformat{\section}[block]
+  {\normalfont\bfseries}{\thesection.}{1em}{}
+\titleformat{\subsection}[block]
+  {\normalfont\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}[block]
+  {\normalfont\bfseries}{\thesubsubsection}{1em}{}
+\titleformat{name=\section,numberless}[block]
+  {\normalfont\bfseries}{}{0pt}{}
+\titlespacing*{name=\section,numberless}{1.25cm}{*1.5}{*1}
+
+\newcommand{\gostunnumberedsection}[2]{%
+  {\centering\normalfont\bfseries #1\par\vspace{1em}}%
+  \addcontentsline{toc}{section}{#2}%
+}
+\titlespacing*{\section}{1.25cm}{*1.5}{*1}
+\titlespacing*{\subsection}{1.25cm}{*1.2}{*0.8}
+\titlespacing*{\subsubsection}{1.25cm}{*1.0}{*0.6}
 
 \usepackage{tikz}
 \usetikzlibrary{graphs,graphs.standard}
