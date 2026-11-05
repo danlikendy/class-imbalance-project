@@ -10,6 +10,8 @@ fi
 sudo tlmgr update --self
 sudo tlmgr install \
   collection-langcyrillic \
+  hyphen-russian \
+  hyph-utf8 \
   collection-latexrecommended \
   collection-fontsrecommended \
   cm-super \
