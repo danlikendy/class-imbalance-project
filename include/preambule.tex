@@ -63,9 +63,8 @@
 
 \linespread{1.5}
 
-%% Шрифт Times New Roman (близкий эквивалент для pdfLaTeX)
-\usepackage{tempora}
-\usepackage{newtxmath}
+%% Times-like основной шрифт (pdfLaTeX); tempora+newtxmath ломают BasicTeX (LGR, symbol fonts)
+\usepackage{mathptmx}
 
 %% Оформление заголовков по ГОСТ (без увеличения кегля)
 \usepackage{titlesec}

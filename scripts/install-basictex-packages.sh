@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
-# Доп. пакеты для сборки main.pdf поверх brew install --cask basictex
 set -euo pipefail
 export PATH="/Library/TeX/texbin:${PATH:-}"
 
 if ! command -v tlmgr >/dev/null; then
   echo "tlmgr не найден. Сначала: brew install --cask basictex"
-  echo "Затем: eval \"\$(/usr/libexec/path_helper)\""
   exit 1
 fi
 
@@ -14,8 +12,8 @@ sudo tlmgr install \
   collection-langcyrillic \
   collection-latexrecommended \
   collection-fontsrecommended \
-  tempora \
-  newtx \
+  cm-super \
+  psnfss \
   titlesec \
   enumitem \
   tabulary \
@@ -25,7 +23,11 @@ sudo tlmgr install \
   hhline \
   fancyhdr \
   mathtools \
-  bidi \
-  collection-latexextra
+  pgf \
+  listings \
+  wrapfig \
+  gensymb \
+  float \
+  caption
 
-echo "Готово. Сборка: cd $(dirname "$0")/.. && make && open main.pdf"
+echo "Готово. Сборка: cd $(dirname "$0")/.. && make"
