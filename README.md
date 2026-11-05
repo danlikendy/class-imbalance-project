@@ -4,35 +4,40 @@
 
 **Тема:** Разработка предметно-ориентированных подходов к задачам с дисбалансом классов.
 
-**Оформление:** LaTeX-шаблон [Bachelor-Thesis-Template](https://github.com/pavel-collab/Bachelor-Thesis-Template), параметры страницы и шрифта — по методическим рекомендациям кафедры ИИ (Times New Roman 14 pt, интервал 1,5, поля ГОСТ).
+**Оформление:** LaTeX, параметры по методичке кафедры ИИ (14 pt, интервал 1,5, поля ГОСТ).
 
-## Сборка PDF
+## Сборка PDF (macOS, BasicTeX)
 
-Требуется TeX Live (или MacTeX) с поддержкой русского языка:
+Не используй `mactex-no-gui` через brew, если зависают bottle с `ghcr.io` (часто `glib`). Достаточно BasicTeX (~140 MB):
 
 ```bash
-git submodule init && git submodule update   # latexrun
-make
+brew install --cask basictex
 ```
 
-На macOS: `brew install --cask mactex-no-gui` (или полный MacTeX), затем `make` в корне репозитория.
+Дождись строки `🍺  basictex was successfully installed!` (после `Password:` символы **не отображаются** — это нормально, введи пароль и Enter, не Ctrl+C).
+
+**Команды по одной строке**, не вставляй блок с `make` сразу:
+
+```bash
+eval "$(/usr/libexec/path_helper)"
+cd ~/class-imbalance-project
+./scripts/install-basictex-packages.sh
+make
+open main.pdf
+```
+
+Если `pdflatex: command not found` — снова выполни `eval "$(/usr/libexec/path_helper)"` или перезапусти терминал.
 
 ## Структура
 
 | Файл | Назначение |
 |------|------------|
 | `main.tex` | Сборка документа |
-| `include/title-page.tex` | Титульный лист (Финуниверситет) |
+| `include/title-page.tex` | Титульный лист |
 | `parts/Chapter0.tex` | Введение |
-| `parts/Chapter1.tex` — `Chapter3.tex` | Главы 1–3 (сейчас — заголовки параграфов) |
+| `parts/Chapter1.tex` — `Chapter3.tex` | Главы 1–3 (заголовки параграфов) |
 | `parts/Conclusion.tex` | Заключение |
-| `references.bib` | Список источников (≥ 60) |
-| `docs/reference/` | Заявление, PDF методички, исходный DOCX |
-
-## Доработка
-
-- Указать ФИО консультанта от ПАО «Альфа-Банк» на титульном листе.
-- Заменить URL репозитория в приложении А на фактический remote после публикации на GitHub.
-- Наполнить главы 1–3 и уточнить заключение после экспериментов.
+| `references.bib` | Список источников |
+| `docs/reference/` | Заявление и методичка |
 
 Научный руководитель: Коротеев М.В., к.э.н., доцент.
