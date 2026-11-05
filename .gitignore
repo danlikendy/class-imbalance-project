@@ -8,4 +8,7 @@
 *.swp
 *.bbl
 *.toc
-*.blg
+.venv/
+*.pdf
+!docs/reference/*.pdf
+!images/*.pdf
