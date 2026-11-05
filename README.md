@@ -6,15 +6,19 @@
 
 ## Быстрый старт
 
+Сборка: **XeLaTeX** + **Times New Roman** (поля и интервал 1,5 по методичке).
+
 ```bash
 brew install --cask basictex
 eval "$(/usr/libexec/path_helper)"
-./scripts/install-basictex-packages.sh   # один раз, sudo
+./scripts/install-basictex-packages.sh   # один раз, sudo (в т.ч. hyphen-russian)
 make
 open main.pdf
 ```
 
-Рекомендуется **BasicTeX**, не `mactex-no-gui` (часто зависает загрузка зависимостей с ghcr.io).
+Если строки вылезают за поля: `sudo tlmgr install hyphen-russian hyph-utf8`, затем `make clean && make`.
+
+Рекомендуется **BasicTeX**, не `mactex-no-gui` (часто зависает загрузка с ghcr.io).
 
 ## Структура репозитория
 
