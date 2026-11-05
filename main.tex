@@ -1,54 +1,39 @@
-\documentclass[a4paper, openany, 12pt]{article}
+\documentclass[a4paper, openany, 14pt]{extarticle}
 
 %% подключаем стандарт библиографии
 \bibliographystyle{gost71u}
-
-%% для "Abstract" в классе book
-% \newenvironment{abstract}{}{}
-% \usepackage{abstract}
 
 %% подключаем преамбулу: в ней содержится подключение всех необходимых пакетов
 \input{include/preambule.tex}
 
 \begin{document}
-    %% титульник
     \input{include/title-page.tex}
     \newpage
 
     \setcounter{page}{2}
     \fancyfoot[c]{\thepage}
-    %% *надпись над верхним колонтитулом*
-    %% в случае ненадобности можно удалить
-    \fancyhead[L]{\input{include/work-title.tex}}
+    \fancyhead[L]{}
     \fancyhead[R]{}
 
-    %% аннотация
-    \input{parts/Annotation.tex}
-    \newpage
-
-    %% содержание
     \tableofcontents{}
     \newpage
 
-    % \fontsize{14}{16}\selectfont
-    \input{parts/Chapter0.tex} %% Введение
+    \input{parts/Chapter0.tex}
     \newpage
-    \input{parts/Chapter1.tex} %% Постановка задачи
+    \input{parts/Chapter1.tex}
     \newpage
-    \input{parts/Chapter2.tex} %% Обзор существующих решений
+    \input{parts/Chapter2.tex}
     \newpage
-    \input{parts/Chapter3.tex} %% Исследование и построение решения задачи
+    \input{parts/Chapter3.tex}
     \newpage
-    \input{parts/Chapter4.tex} %% Описание практической части
+    \input{parts/Conclusion.tex}
     \newpage
-    \input{parts/Chapter5.tex} %% Заключение
+    \input{parts/independence-statement.tex}
     \newpage
 
-    %% НЕ ТРОГАЙТЕ!!!
     \nocite{*}
     \bibliography{references}
 
-    %% в зависимости от надобности подключаем раздел "Приложение"
-    % \newpage
-    % \input{Appendix.tex}
+    \newpage
+    \input{parts/Appendix.tex}
 \end{document}
