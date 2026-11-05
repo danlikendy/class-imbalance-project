@@ -1,38 +1,42 @@
 \documentclass[a4paper, openany, 14pt]{extarticle}
 
-%% подключаем стандарт библиографии
 \bibliographystyle{gost71u}
-
-%% подключаем преамбулу: в ней содержится подключение всех необходимых пакетов
 \input{include/preambule.tex}
 
 \begin{document}
-    \input{include/title-page.tex}
+\selectlanguage{russian}
+\renewcommand{\contentsname}{Содержание}
 
-    \setcounter{page}{2}
-    \fancyfoot[c]{\thepage}
-    \fancyhead[L]{}
-    \fancyhead[R]{}
+\input{include/title-page.tex}
 
-    \tableofcontents{}
-    \newpage
+\setcounter{page}{2}
+\fancyfoot[c]{\thepage}
+\fancyhead[L]{}
+\fancyhead[R]{}
 
-    \input{parts/Chapter0.tex}
-    \newpage
-    \input{parts/Chapter1.tex}
-    \newpage
-    \input{parts/Chapter2.tex}
-    \newpage
-    \input{parts/Chapter3.tex}
-    \newpage
-    \input{parts/Conclusion.tex}
-    \newpage
-    \input{parts/independence-statement.tex}
-    \newpage
+\begingroup
+\RaggedRight
+\tableofcontents
+\endgroup
+\newpage
+\justifying
 
-    \nocite{*}
-    \bibliography{references}
+\input{parts/Chapter0.tex}
+\newpage
+\input{parts/Chapter1.tex}
+\newpage
+\input{parts/Chapter2.tex}
+\newpage
+\input{parts/Chapter3.tex}
+\newpage
+\input{parts/Conclusion.tex}
+\newpage
+\input{parts/independence-statement.tex}
+\newpage
 
-    \newpage
-    \input{parts/Appendix.tex}
+\nocite{*}
+\bibliography{references}
+
+\newpage
+\input{parts/Appendix.tex}
 \end{document}

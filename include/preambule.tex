@@ -8,6 +8,7 @@
 ]
 
 \usepackage[russian,english]{babel}
+\usepackage{ragged2e}
 \babelfont{rm}{Times New Roman}[
   BoldFont = {Times New Roman Bold},
   ItalicFont = {Times New Roman Italic},
@@ -31,9 +32,8 @@
 \tolerance=2000
 \emergencystretch=2em
 \hyphenpenalty=50
-
-\usepackage{ragged2e}
-\AtBeginDocument{\justifying}
+\lefthyphenmin=2
+\righthyphenmin=2
 
 \usepackage{enumitem}
 \makeatletter
@@ -76,7 +76,7 @@
 \titlespacing*{name=\section,numberless}{1.25cm}{*1.2}{*0.6}
 
 \newcommand{\gostunnumberedsection}[2]{%
-  {\centering\normalfont\bfseries #1\par\vspace{0.8em}}%
+  {\centering\normalfont\bfseries #1\par}%
   \addcontentsline{toc}{section}{#2}%
 }
 
@@ -92,7 +92,8 @@
 \setlength{\cftsubsecnumwidth}{3.2em}
 \setlength{\cftbeforesecskip}{0.35em}
 \setlength{\cftbeforesubsecskip}{0pt}
-\setlength{\cftaftertoctitleskip}{1em}
+\setlength{\cftaftertoctitleskip}{0.5em}
+\renewcommand{\cfttoctitlefont}{\hfill\bfseries}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
