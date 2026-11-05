@@ -46,7 +46,7 @@
 \usepackage{caption} % пакет для подписей к рисункам, в частности, для работы caption*
 \captionsetup{justification=centering} % центрирование подписей к картинкам
 \usepackage{graphicx}                  % вставки рисунков
-\graphicspath{{images/}{images2/}}     % папки с картинками
+\graphicspath{{images/}}     % папки с картинками
 \setlength\fboxsep{3pt}                % отступ рамки \fbox{} от рисунка
 \setlength\fboxrule{1pt}               % толщина линий рамки \fbox{}
 \usepackage{wrapfig}                   % обтекание рисунков и таблиц текстом
@@ -61,8 +61,19 @@
 %% Красная строка
 \setlength{\parindent}{1.25cm}
 
-%% Интервалы
-\linespread{1}
+\linespread{1.5}
+
+%% Шрифт Times New Roman (близкий эквивалент для pdfLaTeX)
+\usepackage{tempora}
+\usepackage{newtxmath}
+
+%% Оформление заголовков по ГОСТ (без увеличения кегля)
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\normalsize\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{0.5em}{}
+\titlespacing*{\section}{1.25cm}{*1.5}{*1}
+\titlespacing*{\subsection}{1.25cm}{*1.2}{*0.8}
 
 %% TikZ
 \usepackage{tikz}

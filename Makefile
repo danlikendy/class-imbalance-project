@@ -11,11 +11,11 @@ PARTS = parts/*.tex
 
 MAIN = main.tex
 
-%.pdf: $(MAIN) $(PARTS) $(INCLUDES)
-	latexrun/latexrun $*
+main.pdf: $(MAIN) $(PARTS) $(INCLUDES) references.bib gost71u.bst
+	pdflatex -interaction=nonstopmode main.tex
+	bibtex main
+	pdflatex -interaction=nonstopmode main.tex
+	pdflatex -interaction=nonstopmode main.tex
 
 clean:
-# this is a bad practice, of course, but it's enough for our purposes
-	cp main.pdf tmp_makefile_main.pdf
-	latexrun/latexrun --clean-all
-	mv tmp_makefile_main.pdf main.pdf
+	rm -f main.aux main.bbl main.blg main.log main.out main.toc main.pdf
