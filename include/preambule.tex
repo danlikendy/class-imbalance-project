@@ -1,4 +1,4 @@
-%% XeLaTeX + ГОСТ: Times New Roman 14 pt, поля, интервал 1,5
+%% XeLaTeX + ГОСТ (методичка кафедры ИИ): TNR 14 pt, поля, интервал 1,5, по ширине
 \usepackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX}
 \setmainfont{Times New Roman}[
@@ -32,6 +32,9 @@
 \emergencystretch=2em
 \hyphenpenalty=50
 
+\usepackage{ragged2e}
+\AtBeginDocument{\justifying}
+
 \usepackage{enumitem}
 \makeatletter
 \AddEnumerateCounter{\asbuk}{\russian@alph}{щ}
@@ -55,57 +58,41 @@
 
 \usepackage{microtype}
 
-\usepackage{caption}
-\captionsetup{justification=centering,font=normalsize,labelfont=normalsize}
 \usepackage{graphicx}
 \graphicspath{{images/}}
 
-\usepackage{array,tabularx,booktabs,longtable,multirow,makecell,hhline}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{gensymb}
-\usepackage{listings}
-\lstset{
-  basicstyle=\normalfont,
-  columns=flexible,
-  breaklines=true
-}
-
 \usepackage{titlesec}
-\titleformat{\section}[block]
-  {\normalfont\bfseries}{\thesection.}{1em}{}
-\titleformat{\subsection}[block]
-  {\normalfont\bfseries}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}[block]
-  {\normalfont\bfseries}{\thesubsubsection}{1em}{}
-\titleformat{name=\section,numberless}[block]
+\titleformat{\section}[hang]
+  {\normalfont\bfseries}{\thesection.}{0.75em}{}
+\titleformat{\subsection}[hang]
+  {\normalfont\bfseries}{\thesubsection}{0.75em}{}
+\titleformat{\subsubsection}[hang]
+  {\normalfont\bfseries}{\thesubsubsection}{0.75em}{}
+\titleformat{name=\section,numberless}[hang]
   {\normalfont\bfseries}{}{0pt}{}
-\titlespacing*{name=\section,numberless}{1.25cm}{*1.5}{*1}
+\titlespacing*{\section}{1.25cm}{*1.2}{*0.6}
+\titlespacing*{\subsection}{1.25cm}{*1.0}{*0.4}
+\titlespacing*{\subsubsection}{1.25cm}{*0.8}{*0.3}
+\titlespacing*{name=\section,numberless}{1.25cm}{*1.2}{*0.6}
 
 \newcommand{\gostunnumberedsection}[2]{%
-  {\centering\normalfont\bfseries #1\par\vspace{1em}}%
+  {\centering\normalfont\bfseries #1\par\vspace{0.8em}}%
   \addcontentsline{toc}{section}{#2}%
 }
-\titlespacing*{\section}{1.25cm}{*1.5}{*1}
-\titlespacing*{\subsection}{1.25cm}{*1.2}{*0.8}
-\titlespacing*{\subsubsection}{1.25cm}{*1.0}{*0.6}
 
-\usepackage{titletoc}
-\titlecontents{section}
-  [0pt]
-  {\addvspace{0.4em}\bfseries}
-  {\contentslabel{2em}}
-  {}
-  {\titlerule*[0.4pc]{.}\contentspage}
-\titlecontents{subsection}
-  [1.25cm]
-  {}
-  {\contentslabel{3em}}
-  {}
-  {\titlerule*[0.4pc]{.}\contentspage}
-
-\usepackage{tikz}
-\usetikzlibrary{graphs,graphs.standard}
+\usepackage{tocloft}
+\renewcommand{\contentsname}{Содержание}
+\renewcommand{\cftsecfont}{\normalfont\bfseries}
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftsecindent}{0pt}
+\setlength{\cftsubsecindent}{0pt}
+\setlength{\cftsecnumwidth}{3.2em}
+\setlength{\cftsubsecnumwidth}{3.2em}
+\setlength{\cftbeforesecskip}{0.35em}
+\setlength{\cftbeforesubsecskip}{0pt}
+\setlength{\cftaftertoctitleskip}{1em}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
