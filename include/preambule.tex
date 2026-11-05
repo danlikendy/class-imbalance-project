@@ -6,15 +6,15 @@
   ItalicFont = {Times New Roman Italic},
   BoldItalicFont = {Times New Roman Bold Italic},
 ]
-\setsansfont{Times New Roman}[
-  BoldFont = {Times New Roman Bold},
-]
-\setmonofont[Scale=0.92]{Courier New}
-\newfontfamily\cyrillicfonttt{Courier New}[Scale=0.92]
 
-\usepackage{polyglossia}
-\setdefaultlanguage{russian}
-\setotherlanguage{english}
+\usepackage[russian,english]{babel}
+\babelfont{rm}{Times New Roman}[
+  BoldFont = {Times New Roman Bold},
+  ItalicFont = {Times New Roman Italic},
+  BoldItalicFont = {Times New Roman Bold Italic},
+]
+\babelfont{sf}{Times New Roman}
+\babelfont{tt}{Times New Roman}
 
 \XeTeXlinebreaklocale "ru"
 \XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
@@ -28,6 +28,9 @@
 
 \setlength{\parindent}{1.25cm}
 \setlength{\parskip}{0pt}
+\tolerance=2000
+\emergencystretch=2em
+\hyphenpenalty=50
 
 \usepackage{enumitem}
 \makeatletter
@@ -51,7 +54,6 @@
 }
 
 \usepackage{microtype}
-\emergencystretch=1.5em
 
 \usepackage{caption}
 \captionsetup{justification=centering,font=normalsize,labelfont=normalsize}
@@ -64,12 +66,11 @@
 \usepackage{gensymb}
 \usepackage{listings}
 \lstset{
-  basicstyle=\small\ttfamily,
+  basicstyle=\normalfont,
   columns=flexible,
   breaklines=true
 }
 
-%% Заголовки: кегль как у текста, перенос по ширине абзаца (block)
 \usepackage{titlesec}
 \titleformat{\section}[block]
   {\normalfont\bfseries}{\thesection.}{1em}{}
@@ -89,6 +90,20 @@
 \titlespacing*{\subsection}{1.25cm}{*1.2}{*0.8}
 \titlespacing*{\subsubsection}{1.25cm}{*1.0}{*0.6}
 
+\usepackage{titletoc}
+\titlecontents{section}
+  [0pt]
+  {\addvspace{0.4em}\bfseries}
+  {\contentslabel{2em}}
+  {}
+  {\titlerule*[0.4pc]{.}\contentspage}
+\titlecontents{subsection}
+  [1.25cm]
+  {}
+  {\contentslabel{3em}}
+  {}
+  {\titlerule*[0.4pc]{.}\contentspage}
+
 \usepackage{tikz}
 \usetikzlibrary{graphs,graphs.standard}
 
@@ -98,5 +113,9 @@
 \renewcommand{\headrulewidth}{0pt}
 
 \usepackage{xurl}
+\PassOptionsToPackage{hyphens}{url}
 \usepackage[hidelinks,unicode]{hyperref}
+\urlstyle{same}
+\renewcommand{\UrlFont}{\normalfont}
+
 \usepackage{indentfirst}

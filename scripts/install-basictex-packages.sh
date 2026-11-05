@@ -16,7 +16,8 @@ sudo tlmgr install \
   collection-fontsrecommended \
   cm-super \
   psnfss \
-  titlesec \
+  titletoc \
+  babel-russian \
   enumitem \
   tabulary \
   booktabs \
