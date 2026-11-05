@@ -6,6 +6,7 @@
 \begin{document}
 \selectlanguage{russian}
 \renewcommand{\contentsname}{Содержание}
+\frenchspacing
 
 \input{include/title-page.tex}
 
@@ -14,12 +15,10 @@
 \fancyhead[L]{}
 \fancyhead[R]{}
 
-\begingroup
-\RaggedRight
+\begin{flushleft}
 \tableofcontents
-\endgroup
+\end{flushleft}
 \newpage
-\justifying
 
 \input{parts/Chapter0.tex}
 \newpage

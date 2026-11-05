@@ -7,18 +7,13 @@
   BoldItalicFont = {Times New Roman Bold Italic},
 ]
 
-\usepackage[russian,english]{babel}
-\usepackage{ragged2e}
+\usepackage[main=russian,english]{babel}
 \babelfont{rm}{Times New Roman}[
   BoldFont = {Times New Roman Bold},
   ItalicFont = {Times New Roman Italic},
   BoldItalicFont = {Times New Roman Bold Italic},
 ]
 \babelfont{sf}{Times New Roman}
-\babelfont{tt}{Times New Roman}
-
-\XeTeXlinebreaklocale "ru"
-\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
 
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
 \usepackage{icomma}
@@ -93,7 +88,9 @@
 \setlength{\cftbeforesecskip}{0.35em}
 \setlength{\cftbeforesubsecskip}{0pt}
 \setlength{\cftaftertoctitleskip}{0.5em}
-\renewcommand{\cfttoctitlefont}{\hfill\bfseries}
+\setlength{\cftbeforetoctitleskip}{0pt}
+\renewcommand{\cfttoctitlefont}{\hfill\normalfont\bfseries}
+\renewcommand{\cftaftertoctitle}{\hfill}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
