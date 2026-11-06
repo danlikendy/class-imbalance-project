@@ -121,9 +121,9 @@ FUNCTION {output.nonnull}
 { swap$
   output.state mid.sentence =
     { ", " * write$ }
-    { output.state after.block =
+        { output.state after.block =
         { add.period$ write$
-          " " "--- " *  write$
+          " " "- " *  write$
           newline$
           "\newblock " write$
         }
@@ -624,7 +624,7 @@ FUNCTION {format.date}
     }
     { month empty$
         'year
-        { year ". " "--- " month * * * }
+        { year ". " "- " month * * * }
       if$
     }
   if$
@@ -669,7 +669,7 @@ FUNCTION {n.dashify}
     { t empty$ not }
     { t #1 #1 substring$ "-" =
         { t #1 #2 substring$ "--" = not
-            { "--" *
+            { "-" *
               t #2 global.max$ substring$ 't :=
             }
             {   { t #1 #1 substring$ "-" = }
